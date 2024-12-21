@@ -1,2 +1,2 @@
-!(Project brief){~./lib/docs/brief.md}
+![Project brief](~./lib/docs/brief.md)
 
