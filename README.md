@@ -34,3 +34,8 @@ First steps with this project would be to secure the AWS account and establish p
     password on that first log in. Then any other details can be added from there, such as email etc. We do not 'hard code' and personal information 
     or passwords. Security is of the up most importance.
 
+The further I go with this project, the more I'm realising that my structure isn't the best and defining the users for the IAM policies in the Main
+app in the bin directory, could also create issues down the line. I'm thinking a complete restructure and create a file explicitly for the creation
+of the user names, then a function to call those names to a main IAM file before being referenced in a main file in the lib folder. This will keep
+things clean and allow the main app file in bin to be just for set up. This will require a whole new structure and even new coding practices. As learning
+this will help in the long term to be more secure, cleaner and more organised

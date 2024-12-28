@@ -16,7 +16,7 @@ export class DeveloperPermissionStack extends cdk.Stack {
                 new iam.PolicyStatement({
                     actions: [
                         's3:*',
-                        'rds*',
+                        'rds:*',
                     ],
                 resources: ['*'],
                 }),

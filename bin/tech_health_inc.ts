@@ -5,6 +5,7 @@ import { UserGroupStack } from '../lib/iam/groups/user_group';
 import { UserPermissionStack } from '../lib/iam/permissions/user_permissions';
 import { DeveloperGroupStack } from '../lib/iam/groups/devops_group';
 import { DeveloperPermissionStack } from '../lib/iam/permissions/devops_permissions';
+import { VPCStack } from '../lib/vpc/vpc_stack';
 
 const app = new cdk.App();
 const env = {
@@ -35,3 +36,5 @@ new DeveloperPermissionStack(app, 'DevPermissionStack', {
     env,
     group: devGroupStack.devGroup
 });
+new VPCStack(app,'VPCStack');
+
