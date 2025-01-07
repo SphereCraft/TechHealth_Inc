@@ -1,21 +1,19 @@
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-export interface DeveloperGroupProps extends cdk.StackProps {
-    users: iam.User[];
+export interface DevelopersGroupProps {
+    developersPolicy: iam.IManagedPolicy;
 }
 
-export class DeveloperGroupStack extends cdk.Stack {
-    public readonly devGroup: iam.Group;
+export class DevelopersGroup extends Construct {
+    public readonly devopsGroup: iam.IGroup;
 
-    constructor(scope: Construct, id: string, props?: DeveloperGroupProps) {
-        super(scope, id, props);
+    constructor(scope: Construct, id: string, props: DevelopersGroupProps) {
+        super(scope, id);
 
-        this.devGroup = new iam.Group(this, 'DevGroup', {
-            groupName: 'Developers'
+        this.devopsGroup = new iam.Group(this, 'DevopsGroup', {
+            groupName: 'DevelopersGroup',
+            managedPolicies: [props.developersPolicy],
         });
-
-        props?.users.forEach(user => this.devGroup.addUser(user));
     }
 }
