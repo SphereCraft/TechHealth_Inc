@@ -14,7 +14,7 @@ export class Dev1 {
             passwordResetRequired: true,
         });
 
-        const developerGroup = new DevelopersGroup(scope, 'DeveloperGroup');
+        const developerGroup = new DevelopersGroup(scope, 'DeveloperGroupDev1');
 
         developerGroup.devopsGroup.addUser(this.user);
 

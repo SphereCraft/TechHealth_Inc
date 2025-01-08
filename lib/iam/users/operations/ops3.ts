@@ -14,7 +14,7 @@ export class Ops3 {
             passwordResetRequired: true,
         });
 
-        const operationsGroup = new OperationsGroup(scope, 'OperationsGroup');
+        const operationsGroup = new OperationsGroup(scope, 'OperationsGroupOps3');
 
         operationsGroup.opsGroup.addUser(this.user);
 
