@@ -3,7 +3,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 export class DevelopersPolicy extends Construct {
-    public readonly policy: iam.IManagedPolicy;
+    public readonly policy: iam.ManagedPolicy;
 
     constructor(scope: Construct, id: string) {
         super(scope, id);

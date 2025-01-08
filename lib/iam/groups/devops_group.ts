@@ -1,19 +1,23 @@
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-
-export interface DevelopersGroupProps {
-    developersPolicy: iam.IManagedPolicy;
-}
+import { DevelopersPolicy } from '../policies/devops_policies';
 
 export class DevelopersGroup extends Construct {
-    public readonly devopsGroup: iam.IGroup;
+    public readonly devopsGroup: iam.Group;
 
-    constructor(scope: Construct, id: string, props: DevelopersGroupProps) {
+    constructor(scope: Construct, id: string) {
         super(scope, id);
 
         this.devopsGroup = new iam.Group(this, 'DevopsGroup', {
-            groupName: 'DevelopersGroup',
-            managedPolicies: [props.developersPolicy],
+        groupName: 'DevelopersGroup',
         });
+
+        const developerPolicy = new DevelopersPolicy(this, 'DeveloperPolicy');
+
+        developerPolicy.policy.attachToGroup(this.devopsGroup);
+
+        cdk.Tags.of(this).add('Environment', 'Developers');
+        cdk.Tags.of(this).add('Created', 'Jeff');
     }
 }

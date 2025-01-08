@@ -1,3 +1,7 @@
+Update: I have created a CDK stack for the IAM infrastructure. Everything is working as expected. I will be creating a CDK stack for the main app and
+then I will be creating a CDK stack for the S3 bucket and RDS. I will also be creating a CDK stack for the EC2 instance. I will also be creating a CDK
+stack for the VPC. Everything in the IAM stack is now modular and can be used in other CDK stacks. This also makes it very easy to add new users and groups.
+
 ![Project brief](./lib/docs/brief.md)
 
 ![Basic architecture for this project.](./lib/docs/TechHealth_Inc.drawio.png)
