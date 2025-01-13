@@ -1,7 +1,3 @@
-Update: I have created a CDK stack for the IAM infrastructure. Everything is working as expected. I will be creating a CDK stack for the main app and
-then I will be creating a CDK stack for the S3 bucket and RDS. I will also be creating a CDK stack for the EC2 instance. I will also be creating a CDK
-stack for the VPC. Everything in the IAM stack is now modular and can be used in other CDK stacks. This also makes it very easy to add new users and groups.
-
 ![Project brief](./lib/docs/brief.md)
 
 ![Basic architecture for this project.](./lib/docs/TechHealth_Inc.drawio.png)
@@ -17,11 +13,11 @@ app and any developments. After this discussions can be made with the company du
         Set up IAM groups and permissions
         Create VPC
         Create Private and public subnets in 2 Available Zones
-        Add S3 to public subnets
+        Add EC2 to public subnets
         RDS to private subnets
-        Allow connections from RDS to S3
+        Allow connections from RDS to EC2
 
-# IAM user name/gropus and permissions added.
+# IAM user name/groups and permissions added.
 
 First steps with this project would be to secure the AWS account and establish principles of least privilege for all.
     Using the AWS console
@@ -42,4 +38,11 @@ The further I go with this project, the more I'm realising that my structure isn
 app in the bin directory, could also create issues down the line. I'm thinking a complete restructure and create a file explicitly for the creation
 of the user names, then a function to call those names to a main IAM file before being referenced in a main file in the lib folder. This will keep
 things clean and allow the main app file in bin to be just for set up. This will require a whole new structure and even new coding practices. As learning
-this will help in the long term to be more secure, cleaner and more organised
+this will help in the long term to be more secure, cleaner and more organised.
+
+# Creating Constructs
+
+Now that the infrastructure for the IAM is created, I will be creating a CDK stack for the main app.
+The VPC is currently created in the lib/constructs/vpc_stack.ts file. I will be creating a CDK stack for the S3 bucket and RDS. I will also be creating a CDK
+stack for the EC2 instance and connecting the RDS to the S3 bucket.
+
