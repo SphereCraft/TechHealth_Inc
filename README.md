@@ -46,3 +46,32 @@ Now that the infrastructure for the IAM is created, I will be creating a CDK sta
 The VPC is currently created in the lib/constructs/vpc_stack.ts file. I will be creating a CDK stack for the S3 bucket and RDS. I will also be creating a CDK
 stack for the EC2 instance and connecting the RDS to the S3 bucket.
 
+
+Final Checklist
+
+    Project Components:
+        ✅ VPC Stack: Includes subnets, NAT gateways (if any), and routing.
+        ✅ EC2 Stack: Includes EC2 instance and security group.
+        ✅ RDS Stack: Includes RDS instance and security group.
+        ✅ Modular structure with clear separation of concerns.
+
+    Cross-Stack Dependencies:
+        ✅ Ensure the RDS stack references the EC2 security group.
+        ✅ Ensure VPC is shared across all stacks.
+
+    Testing:
+        Run cdk synth to confirm the CloudFormation template is generated without errors.
+        Run cdk diff to verify that the changes match your intended infrastructure.
+
+    Cleanup:
+        ✅ Confirm that removalPolicy is set to DESTROY for resources like RDS during development/testing to avoid lingering costs.
+        Change it to RETAIN or SNAPSHOT for production.
+
+    Documentation:
+        Add a README file to explain the project structure, its purpose, and how to deploy it.
+
+    Next Steps:
+        If you’re not deploying the stacks (to avoid costs), make sure you document how to deploy and destroy them for future reference.
+        Consider adding automated testing or integration with CI/CD pipelines in the future.
+
+
